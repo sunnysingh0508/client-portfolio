@@ -23,6 +23,17 @@ document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
 });
 
+const resumeLink = document.querySelector(".resume-link");
+resumeLink?.addEventListener("click", () => {
+  const downloadLink = document.createElement("a");
+  downloadLink.href = resumeLink.href;
+  downloadLink.download = "Satyam_Priyanshu_Resume.pdf";
+  downloadLink.hidden = true;
+  document.body.append(downloadLink);
+  downloadLink.click();
+  downloadLink.remove();
+});
+
 const sections = navAnchors
   .map((anchor) => document.querySelector(anchor.getAttribute("href")))
   .filter(Boolean);
